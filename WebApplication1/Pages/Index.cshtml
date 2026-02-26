@@ -1,0 +1,34 @@
+﻿@page
+@model WebApplication1.Pages.IndexModel
+@{
+    ViewData["Title"] = "Oracle 即時查詢範例 (.NET 9)";
+}
+
+<h2>即時查詢 Oracle 資料庫</h2>
+<div>
+    <label for="productId">產品編號：</label>
+    <input type="text" id="productId" onkeyup="fetchProductData()" placeholder="輸入產品編號" />
+</div>
+<div id="productInfo" style="margin-top: 20px;">
+    <!-- 結果將顯示在這裡 -->
+</div>
+
+<script>
+    async function fetchProductData() {
+        const productId = document.getElementById('productId').value;
+
+        if (!productId) {
+            document.getElementById('productInfo').innerHTML = "";
+            return;
+        }
+
+        try {
+            const response = await fetch(`/Index?handler=ProductInfo&productId=${productId}`);
+            const data = await response.text();
+            document.getElementById('productInfo').innerHTML = data;
+        } catch (error) {
+            console.error('查詢發生錯誤:', error);
+            document.getElementById('productInfo').innerHTML = "發生錯誤，請重試！";
+        }
+    }
+</script>
