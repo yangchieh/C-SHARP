@@ -1,0 +1,50 @@
+# --- IDE / �s�边���� ---
+# VS Code
+.vscode/
+.history/
+
+# Eclipse
+.settings/
+.project
+.classpath
+.metadata/
+bin/
+target/
+
+# IntelliJ IDEA / WebStorm (�Y���Ӧ��Ψ�)
+.idea/
+*.iml
+
+# --- �@�~�t�ΩU���ɮ� ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --- �M�ר̿�P���ҳ]�w ---
+# Node.js (�Y�� node_modules)
+node_modules/
+dist/
+build/
+npm-debug.log
+
+# C#
+bin/
+obj/
+
+# Python (�Y����������)
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Java (�sĶ�᪺����)
+*.class
+*.jar
+*.war
+build/
+
+# --- ��L ---
+# �@��|�������O����
+*.log
+*.tmp
