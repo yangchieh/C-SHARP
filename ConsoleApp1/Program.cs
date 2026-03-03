@@ -50,7 +50,7 @@ namespace XmlSchemaParser
                             string fieldTitle = field.Attribute("TITLE")?.Value;
                             string fieldType = field.Attribute("TYPE")?.Value;
                             string fieldSize = field.Attribute("SIZE")?.Value;
-                            Console.WriteLine($"     - 欄位: {fieldName,-15} | {fieldTitle,-20} | 型別: {fieldType}({fieldSize})");
+                            Console.WriteLine($"     - 欄位: {fieldName,-30} | {PadRightChinese(fieldTitle, 40)} | 型別: {fieldType}({fieldSize})");
                             // 7. 檢查是否有列舉值 (VALUE 節點)
                             var values = field.Elements("VALUE");
                             foreach (var val in values)
@@ -67,6 +67,23 @@ namespace XmlSchemaParser
             {
                 Console.WriteLine($"解析錯誤: {ex.Message}");
             }
+        }
+
+        static string PadRightChinese(string str, int totalWidth)
+        {
+            // 1. 計算目前的視覺寬度 (中文計為 2, 英文計為 1)
+            int currentWidth = 0;
+            foreach (char c in str)
+            {
+                // 利用 Unicode 編碼判斷是否為雙位元字元 (大部分中文字在此範圍)
+                currentWidth += (c > 127) ? 2 : 1;
+            }
+
+            // 2. 計算需要補多少個「半形空格」
+            int paddingCount = totalWidth - currentWidth;
+
+            // 3. 如果寬度已經超過，就不補；否則補上對應數量的空格
+            return paddingCount > 0 ? str + new string(' ', paddingCount) : str;
         }
     }
 }

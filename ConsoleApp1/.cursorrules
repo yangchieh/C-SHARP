@@ -1,0 +1,17 @@
+# C# Project Specific Rules
+
+## 語言與框架
+- 使用 C# 12 / .NET 8+ 最新語法。
+- 優先使用 String Interpolation ($"...") 進行字串處理。
+
+## 視覺與排版 (關鍵！)
+- 在 Console 輸出中，若涉及中文字符對齊，必須使用自定義的視覺寬度計算邏輯（中文字 = 2 單位，英數 = 1 單位）。
+- 嚴禁直接使用 `{-n}` 格式化包含中文的字串，應調用專門的補齊方法（如 PadRightVisual）。
+
+## 代碼風格
+- 命名規則：類別與方法使用 PascalCase，變數使用 camelCase。
+- 註解：使用繁體中文，且邏輯複雜處必須撰寫註解。
+- 優先使用 File-scoped namespaces (例如 namespace MyProject;)。
+
+## 異常處理
+- 所有的 Console 輸入 (Console.ReadLine) 必須包含 TryParse 或錯誤檢查，避免程式崩潰。
