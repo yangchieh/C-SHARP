@@ -15,3 +15,6 @@
 
 ## 異常處理
 - 所有的 Console 輸入 (Console.ReadLine) 必須包含 TryParse 或錯誤檢查，避免程式崩潰。
+
+## 版本控制
+- 生成 commit 訊息時，需遵循 Conventional Commits 規範，使用適當的 prefix（如 feat、fix、test 等）並提供明確具體的描述。
